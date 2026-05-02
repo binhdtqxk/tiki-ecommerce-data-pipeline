@@ -21,14 +21,14 @@ product_data = []
 for cat in categories:
     cat_id=cat['id']
     cat_name=cat['name']
-    print(f"Start crawl category: {cat_name} ---")
+    print(f"Start crawl category: {cat_name} \n---")
 
     #4. Create loop to crawl through product's pages
-    for page in range(1,20):
+    for page in range(1,21):
         print(f"Start crawl from page: {page}...")
 
         #API Url
-        url = f"https://tiki.vn/api/personalish/v1/blocks/listings?limit=10&sort=top_seller&page={page}&category={cat_id}"
+        url = f"https://tiki.vn/api/personalish/v1/blocks/listings?limit=40&sort=top_seller&page={page}&category={cat_id}"
 
         response=requests.get(url, headers=headers)
 
@@ -58,5 +58,5 @@ for cat in categories:
 
 # 4. Turn list to Dataframe and export to csv file(staging)
 df = pd.DataFrame(product_data)
-df.to_csv('../data/raw/tiki_raw_products.csv', index=False, encoding='utf-8-sig')
+df.to_csv('data/raw//tiki_raw_products.csv', index=False, encoding='utf-8-sig')
 print(f"Crawl finish! Crawled {len(df)} products.")
