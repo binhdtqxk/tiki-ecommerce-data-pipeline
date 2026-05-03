@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import time
 import random
+from datetime import datetime
 
 # 1. Declare header
 headers = {
@@ -57,6 +58,10 @@ for cat in categories:
         time.sleep(random.uniform(1, 3))
 
 # 4. Turn list to Dataframe and export to csv file(staging)
+#Create datetime for the file
+current_date = datetime.now().strftime("%Y%m%d")
+#Create file name based on datetime
+file_name= f'tiki_raw_products_{current_date}.csv'
 df = pd.DataFrame(product_data)
-df.to_csv('data/raw//tiki_raw_products.csv', index=False, encoding='utf-8-sig')
+df.to_csv(f'data/raw//tiki_raw_products.csv', index=False, encoding='utf-8-sig')
 print(f"Crawl finish! Crawled {len(df)} products.")
