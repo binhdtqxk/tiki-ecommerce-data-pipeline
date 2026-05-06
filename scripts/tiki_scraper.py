@@ -3,6 +3,9 @@ import pandas as pd
 import time
 import random
 from datetime import datetime
+import os
+import boto3
+from dotenv import load_dotenv
 
 # 1. Declare header
 headers = {
@@ -63,5 +66,36 @@ current_date = datetime.now().strftime("%Y%m%d")
 #Create file name based on datetime
 file_name= f'tiki_raw_products_{current_date}.csv'
 df = pd.DataFrame(product_data)
-df.to_csv(f'data/raw//tiki_raw_products.csv', index=False, encoding='utf-8-sig')
-print(f"Crawl finish! Crawled {len(df)} products.")
+df.to_csv(f'data/raw/{file_name}', index=False, encoding='utf-8-sig')
+print(f"Crawl finish! Crawled {len(df)} product. Saved in {file_name}")
+
+# --- UPLOAD RAW DATA TO AWS S3 ---
+
+# 1. Load env variables from .env file.
+load_dotenv()
+
+AWS_ACCESS_KEY_ID= os.getenv(AWS_ACCESS_KEY_ID)
+AWS_SECRET_ACCESS_KEY=os.getenv(AWS_SECRET_ACCESS_KEY)
+AWS_REGION=os.getenv(AWS_REGION)
+S3_BUCKET_NAME=os.getenv(S3_BUCKET_NAME)
+
+#2. Declare S3 client
+
+s3_client = boto3.client(
+    's3',
+    aws_access_key_id=AWS_ACCESS_KEY,
+    aws_secret_access_key=AWS_SECRET_KEY,
+    region_name=AWS_REGION
+)
+
+#3. Declare local & cloud file path
+local_file_path= f'data/raw/{file_name}'
+s3_file_key= f'raw_data/tiki/{file_name}'
+
+#4. Upload
+try:
+    print(f'Uploading csv file {file_name} to AWS S3...')
+    s3_client.upload_file(local_file_path, S3_BUCKET_NAME, s3_file_key)
+    print(f'Uploaded successfully! Data now arrived at S3: s3://{S3_BUCKET_NAME}/{s3_file_key}')
+except Exception as e:
+    print(f'Uploaded unsuccessfully! Error: {e}')
