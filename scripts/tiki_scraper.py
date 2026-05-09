@@ -5,7 +5,7 @@ import random
 from datetime import datetime
 import os
 import boto3
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 
 # 1. Declare header
 headers = {
@@ -72,19 +72,19 @@ print(f"Crawl finish! Crawled {len(df)} product. Saved in {file_name}")
 # --- UPLOAD RAW DATA TO AWS S3 ---
 
 # 1. Load env variables from .env file.
-load_dotenv()
+load_dotenv(find_dotenv())
 
-AWS_ACCESS_KEY_ID= os.getenv(AWS_ACCESS_KEY_ID)
-AWS_SECRET_ACCESS_KEY=os.getenv(AWS_SECRET_ACCESS_KEY)
-AWS_REGION=os.getenv(AWS_REGION)
-S3_BUCKET_NAME=os.getenv(S3_BUCKET_NAME)
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_REGION = os.getenv('AWS_REGION')
+S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
 
 #2. Declare S3 client
 
 s3_client = boto3.client(
     's3',
-    aws_access_key_id=AWS_ACCESS_KEY,
-    aws_secret_access_key=AWS_SECRET_KEY,
+    aws_access_key_id=AWS_ACCESS_KEY_ID,
+    aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
     region_name=AWS_REGION
 )
 
