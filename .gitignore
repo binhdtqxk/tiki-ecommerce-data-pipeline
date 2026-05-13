@@ -9,3 +9,5 @@ __pycache__/
 
 # Ignore environment variables
 .env
+# Ignore storage integration file
+scripts/snowflake_setup/storage_integration.sql
