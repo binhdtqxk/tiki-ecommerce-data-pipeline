@@ -16,5 +16,5 @@ create or replace table Tiki_Products_Raw (
     
     -- 2 Metadata columns take from file name
     source_file_name string,
-    ingested_at TIMESTAMP
+    crawled_date TIMESTAMP
 )
