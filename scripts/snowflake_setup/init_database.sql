@@ -7,6 +7,9 @@ create schema if not exists staging;
 --Create warehouse (contain dim and fact table)
 create schema if not exists core;
 
+--Create warehouse
+CREATE WAREHOUSE DBT_WH WITH WAREHOUSE_SIZE = 'XSMALL';
+
 --Create staging that point to asw s3 bucket
 use schema staging;
 create or replace stage my_s3_tiki_stage

@@ -1,0 +1,11 @@
+
+create user dbt_scv_user
+    DEFAULT_ROLE= SYSADMIN
+    DEFAULT_WAREHOUSE= DBT_WH;
+alter user dbt_scv_user set rsa_public_key='MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsyzOgVILUNRuGYuGAw2t
+4DfJe8IOhg09vqurSVseDQbnu1tc1cK9GODRR9+5cKvMhfiq8qfBfgv3HTHuagvh
+zrggcw6Mg/tqwrT2Ez9zgri07uSHIrtKQ4s9alPsKydygAR3aC0E7kBDhghJ699T
+ELq+IOURz7rzacMpQYWSo47f+qO5pYDMjqJu8qvRJhiz1za/ivfEI3O/Elt6+O+q
+R19Y3IQwfugQ08hhq4syhLiuad5EEquaROBDf+3W7Xqp2ZWovFrK90xRkTSYrikV
+JFn/HfbWVawy4zpNVgUx9I+1jf7uqKBGapkqBmh1yGmBAiKZveIzbTKHsoguvcAe
+OQIDAQAB';   

@@ -11,3 +11,5 @@ __pycache__/
 .env
 # Ignore storage integration file
 scripts/snowflake_setup/storage_integration.sql
+# Ignore key_pair for dbt connection
+.dbt_keys/
