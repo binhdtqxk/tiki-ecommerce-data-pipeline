@@ -1,0 +1,66 @@
+[0m16:40:56.037390 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001599C3F9E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000159990EB250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001599E79BC50>]}
+
+
+============================== 16:40:56.043139 | 7028ee7e-dfe9-43a4-b2a4-d357287c7de6 ==============================
+[0m16:40:56.043139 [info ] [MainThread]: Running with dbt=1.11.10
+[0m16:40:56.043816 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\Admin\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt init tiki_dbt_project', 'use_colors': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m16:40:56.082199 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\Admin\.dbt
+[0m16:40:56.086244 [debug] [MainThread]: Starter project path: D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\dbt\include\starter_project
+[0m16:40:56.117945 [info ] [MainThread]: 
+Your new dbt project "tiki_dbt_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m16:40:56.118541 [info ] [MainThread]: Setting up your profile.
+[0m16:41:06.805570 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m16:41:06.806101 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m16:41:06.806428 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m17:11:38.292079 [error] [MainThread]: Encountered an error:
+
+[0m17:11:38.371173 [error] [MainThread]: Traceback (most recent call last):
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ~~~~^^^^^^^^^^^^^^^^^
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\dbt\cli\main.py", line 488, in init
+    results = task.run()
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\dbt\task\init.py", line 346, in run
+    self.setup_profile(profile_name)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\dbt\task\init.py", line 262, in setup_profile
+    self.create_profile_from_target(adapter, profile_name=profile_name)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\dbt\task\init.py", line 179, in create_profile_from_target
+    self.create_profile_from_profile_template(profile_template, profile_name)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\dbt\task\init.py", line 163, in create_profile_from_profile_template
+    target = self.generate_target_from_input(prompts, initial_target)
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\dbt\task\init.py", line 129, in generate_target_from_input
+    target[key] = click.prompt(
+                  ~~~~~~~~~~~~^
+        text, default=default, hide_input=hide_input, type=type
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\click\termui.py", line 218, in prompt
+    value = prompt_func(prompt)
+  File "D:\2026\Data\Data analyst Bootcamp\Documentary\Tiki\tiki-ecommerce-data-pipeline\env\Lib\site-packages\click\termui.py", line 201, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m17:11:38.382244 [debug] [MainThread]: Command `dbt init` failed at 17:11:38.381376 after 1842.49 seconds
+[0m17:11:38.384748 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000159B9D58050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000159B9CC3AD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000159B9C53460>]}
+[0m17:11:38.387210 [debug] [MainThread]: Flushing usage events
+[0m17:11:39.652870 [debug] [MainThread]: An error was encountered while trying to flush usage events
