@@ -34,3 +34,12 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+    # Setup Staging location
+    staging:
+      +schema: STAGING
+      +materialized: view
+      
+    # 2. Setup Mart location
+    marts:
+      +schema: CORE
+      +materialized: table
