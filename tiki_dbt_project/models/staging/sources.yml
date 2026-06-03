@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: snowflake_raw_source 
+    database: TIKI_DB          
+    schema: STAGING            
+    tables:
+      - name: TIKI_PRODUCTS_RAW 
